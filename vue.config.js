@@ -25,7 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: './',
-  outputDir: 'dist',
+  outputDir: 'dist1',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -41,7 +41,7 @@ module.exports = {
           // change xxx-api/login => mock/login
           // detail: https://cli.vuejs.org/config/#devserver-proxy
           [process.env.VUE_APP_BASE_API]: {
-            target: `http://221.122.122.58:8080`, //修改后台接口地址
+            target: `http://221.122.93.58:8080`, //修改后台接口地址
             changeOrigin: true,
             pathRewrite: {
               ['^'+process.env.VUE_APP_BASE_API]: ''
@@ -49,9 +49,9 @@ module.exports = {
           }
         },
     // proxy: {
-    //       '/api': {  
-    //         target: 'http://221.122.122.58:8080/',  
-    //         changeOrigin: true, 
+    //       '/api': {
+    //         target: 'http://221.122.122.58:8080/',
+    //         changeOrigin: true,
     //         pathRewrite: {
     //           '^/apis': ''
     //         }

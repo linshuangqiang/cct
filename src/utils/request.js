@@ -42,7 +42,7 @@ service.interceptors.response.use(
       // return res
     if (res.status != '0') {
       Message({
-        message: res.message || 'Error',
+        message: res.msg || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
@@ -69,7 +69,8 @@ service.interceptors.response.use(
   error => {
     var that = this
     console.log(error)
-      console.log(3)
+    const {data} = error.response
+      console.log(data)
     console.log('err' + error) // for debug
     Message({
       message: error.message,
@@ -77,15 +78,28 @@ service.interceptors.response.use(
       duration: 5 * 1000
     })
 // 删除token
-removeToken('')
-console.log('getToken()')
-console.log(getToken())
-// 刷新当前页面
-router.go(0)
+  return;
+if(data == 401){
 
-store.dispatch('user/resetToken').then(() => {
-  location.reload()
-})
+  return;
+}
+if(data == 401){
+
+  removeToken('')
+  store.dispatch('user/resetToken').then(() => {
+    location.reload()
+  })
+}else{
+  removeToken('')
+  console.log('getToken()')
+  console.log(getToken())
+  // 刷新当前页面
+  router.go(0)
+
+  store.dispatch('user/resetToken').then(() => {
+    location.reload()
+  })
+}
 // setTimeout(function(){
 //   console.log('user')
 //     store.dispatch('user/login',{username: 'user',password: 'pass'})

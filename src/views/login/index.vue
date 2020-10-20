@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">选型工具</h3>
       </div>
 
       <el-form-item prop="username">
@@ -43,7 +43,7 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-      <div class="tips">
+      <div class="tips" style="display: none;">
         <span style="margin-right:20px;">username: admin</span>
         <span> password: any</span>
       </div>
@@ -55,6 +55,7 @@
 <script>
 import { validUsername } from '@/utils/validate'
 import { logining } from '@/api/movie'
+import Cookies from 'js-cookie'
 export default {
   name: 'Login',
   data() {
@@ -77,8 +78,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'user',
-        password: 'pass'
+        username: 'pengwtaa@novagin.com',
+        password: 'a123456789'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -147,15 +148,16 @@ export default {
     handleLogin() {
 
             // this.$router.push({ path: this.redirect || '/' })
-
+var that = this
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           // 代码调到了src/store下的user.js,调用了里面的login方法
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            console.log(this.redirect)
+          this.$store.dispatch('user/login', this.loginForm).then((response) => {
+            console.log(1,this.redirect,response)
+            // Cookies.set(setuserName, token)
             // this.$router.push({ path: '/home1' })
-
+            // sessionStorage.setItem('user',that.loginForm.username)
             this.$router.push({ path: this.redirect || '/' })
             console.log('login')
             this.loading = false

@@ -9,6 +9,12 @@ export function getToken() {
 export function setToken(token) {
   return Cookies.set(TokenKey, "Bearer " +token)
 }
+export function setuserName(token) {
+  return Cookies.set(setuserName, token)
+}
+export function getuserName() {
+  return Cookies.get(setuserName)
+}
 
 export function removeToken() {
   return Cookies.remove(TokenKey)

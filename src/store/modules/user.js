@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken,setuserName,getuserName } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import Cookies from 'js-cookie'
 
 const getDefaultState = () => {
   return {
@@ -38,7 +39,14 @@ const actions = {
         console.log(response.access_token)
         console.log('*****')
         commit('SET_TOKEN', response.access_token)
+        commit('SET_NAME', response.userName)
         setToken(response.access_token)
+        setuserName(response.userName)
+        sessionStorage.setItem('user',response.userName)
+        Cookies.set('setuserName', response.userName)
+
+        console.log(1,Cookies.get('TokenKey'));
+        console.log(2,Cookies.get('setuserName'));
         resolve()
       }).catch(error => {
         reject(error)

@@ -41,7 +41,6 @@ export const constantRoutes = [
         meta: { title: '解决方案列表',  affix: true }
       }]
   },
-
   {
     path: '/home',
     component: Layout,
@@ -58,10 +57,46 @@ export const constantRoutes = [
         meta: { title: '新建解决方案',  affix: true }
       },
       {
+        path: 'solution-add-0',
+        component: () => import('@/views/home/solution-add-0'),
+        name: 'solution-add',
+        meta: { title: '新建解决方案',  affix: true }
+      },
+      {
+        path: 'solution-add-1',
+        component: () => import('@/views/home/solution-add-1'),
+        name: 'solution-add',
+        meta: { title: '新建解决方案',  affix: true }
+      },
+      {
+        path: 'solution-add-show',
+        component: () => import('@/views/home/solution-add-show'),
+        name: 'solution-add',
+        meta: { title: '查看配置清单',  affix: true }
+      },
+// solution-add-show
+      {
         path: 'solution-list',
         component: () => import('@/views/home/solution-list'),
         name: 'solution-list',
         meta: { title: '解决方案列表',  affix: true }
+      }
+    ]
+  },
+  {
+    path: '/imdc',
+    component: Layout,
+    redirect: '/imdc/imdc-list',
+    name: 'imdc',
+    meta: {
+      title: 'imdc-解决方案'
+    },
+    children: [
+      {
+        path: 'imdc-list',
+        component: () => import('@/views/imdc/imdc-list'),
+        name: 'imdc-list',
+        meta: { title: 'imdc-解决方案',  affix: true }
       }
     ]
   },

@@ -39,7 +39,7 @@ a{
 }
 .cont-jjfa{
     padding:40px 50px;
-    border-top: 2px solid #41923e; 
+    border-top: 2px solid #41923e;
     background-color: #f5f5f5;
 }
 .top{
@@ -77,4 +77,7 @@ a{
 }
 .toppicker input{
     color: #6bc966;
+}
+.el-table .has-gutter tr th{
+  background-color: #6bc966 !important;
 }

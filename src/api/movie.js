@@ -30,3 +30,56 @@ export function logining1(data) {
     data
   })
 }
+// 代理商销售PDP名称下拉
+export function quaryMemberlist(data){
+  return request({
+    url: '/c4c/memberlist/quaryMemberlist',
+    method: 'post',
+    data:qs.stringify(data)
+  })
+}
+
+export function getProductList(data){
+  return request({
+    url: '/c4c/snd-product/getProductList',
+    method: 'post',
+    data:qs.stringify(data)
+  })
+}
+export function sndDesign(data){
+  return request({
+    url: '/c4c/snd-design/addDesign',
+    method: 'post',
+    data:qs.stringify(data)
+  })
+}
+export function filterSndSolution(data){
+  return request({
+    url: '/c4c/snd-solution/filterSndSolution',
+    method: 'post',
+    data:qs.stringify(data)
+  })
+}
+
+// export function quaryStatuscode(data){
+//   return request({
+//     url: '/c4c/snd-statuscode/quaryStatuscode',
+//     method: 'get',
+//     data:qs.stringify(data)
+//   })
+// }
+export function quaryStatuscode(data){
+  return request({
+    url: '/c4c/snd-statuscode/quaryStatuscode?'+data,
+    method: 'get',
+    data
+  })
+}
+
+export function deleteSndSolution(data){
+  return request({
+    url: '/c4c/snd-solution/deleteSndSolution',
+    method: 'post',
+    data:qs.stringify(data)
+  })
+}
