@@ -453,7 +453,7 @@
       },
       deleteSndSolution(row){
           var that = this;
-            deleteSndSolution({sndSolution : row.solutionID}).then((response) => {
+            deleteSndSolution({solutionID : row.solutionID}).then((response) => {
               const { data } =response;
                       let arr = that.tableData1
                       for(let i = 0; i < arr.length; i++){
